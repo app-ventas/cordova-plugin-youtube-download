@@ -1,0 +1,8 @@
+{
+  "name": "cordova-plugin-youtube-download",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/app-ventas/cordova-plugin-youtube-download.git"
+  },
+  "version": "1.0.0"
+}
