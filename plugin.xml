@@ -28,7 +28,7 @@
           </provider>
         </config-file>
 
-        <source-file src="src/android/com/cordova/smtp/client/YoutubeDownloadClient.java" target-dir="src/com/cordova/smtp/client"/>
+        <source-file src="src/android/com/cordova/youtube/download/YoutubeDownloadClient.java" target-dir="src/com/cordova/youtube/download"/>
 
     </platform>
 </plugin>
