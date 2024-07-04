@@ -59,7 +59,7 @@ public class YoutubeDownloadClient extends CordovaPlugin {
             }
             fileOutput.close();
             callbackContext.success("Video downloaded successfully to " + filePath);
-        } catch (Exception e) {
+        } catch (Exception error) {
             String message = "Error descargando video ";
             if(error.getCause() != null && error.getCause().getMessage().length() > 0) message = error.getCause().getLocalizedMessage();            
             if(error.getCause() != null && error.getCause().getLocalizedMessage().length() > 0) message = error.getCause().getLocalizedMessage();
