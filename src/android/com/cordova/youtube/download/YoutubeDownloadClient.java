@@ -29,9 +29,6 @@ public class YoutubeDownloadClient extends CordovaPlugin {
 				return true;
 			}
 			return false;
-			
-			callbackContext.success();
-			return true;
 		
         } catch (Exception error) {
 			
