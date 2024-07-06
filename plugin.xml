@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-youtube-download"
-    version="1.2.0">
+ <?xml version="1.0" encoding="UTF-8"?>
 
-    <name>Sender to url video from javascript</name>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+            id="cordova-plugin-youtube-download" version="0.0.1.">
 
-    <js-module src="www/YoutubeDownloadClient.js" name="YoutubeDownloadClient">
+    <name>YouTubeDownloader</name>
+    <description>Cordova Plugin to download YouTube videos</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova, youtube, downloader</keywords>
+    
+    <js-module src="www/YoutubeDownloadClient.js" name="SMTPClient">
         <clobbers target="YoutubeDownloadClient" />
     </js-module>
 
@@ -15,20 +17,14 @@
         <!-- Cordova >= 3.0.0 -->
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="YoutubeDownloadClient">
-                <param name="android-package" value="com.cordova.youtube.download.YoutubeDownloadClient"/>
+                <param name="android-package" value="com.cordova.youtube.YoutubeDownloadClient"/>
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 			<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="/manifest/application">
-          <provider android:name="com.cordova.youtube.download.YoutubeDownloadClient" android:authorities="${applicationId}.opener.provider" android:exported="false" android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/opener_paths" />
-          </provider>
-        </config-file>
-
-        <source-file src="src/android/com/cordova/youtube/download/YoutubeDownloadClient.java" target-dir="src/com/cordova/youtube/download"/>
-
+        </config-file>        
+        <source-file src="src/android/com/cordova/youtube/YoutubeDownloadClient.java" target-dir="src/com/cordova/youtube" />
+    
     </platform>
 </plugin>

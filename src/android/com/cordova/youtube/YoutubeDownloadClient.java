@@ -1,5 +1,4 @@
-package com.cordova.youtube.download;
-  
+package com.cordova.youtube;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -14,29 +13,18 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * This class send an email from JavaScript.
- */
- 
 public class YoutubeDownloadClient extends CordovaPlugin {
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		try {
-			if (action.equals("downloadVideo")) {
-				String videoUrl = args.getString(0);
-				this.downloadVideo(videoUrl, callbackContext);
-				return true;
-			}
-			return false;
-		
-        } catch (Exception error) {
-			
-			return false;
+        if (action.equals("downloadVideo")) {
+            String videoUrl = args.getString(0);
+            this.downloadVideo(videoUrl, callbackContext);
+            return true;
         }
-    } 
-	
-	private void downloadVideo(String videoUrl, CallbackContext callbackContext) {
+        return false;
+    }
+
+    private void downloadVideo(String videoUrl, CallbackContext callbackContext) {
         try {
             URL url = new URL(videoUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -56,14 +44,8 @@ public class YoutubeDownloadClient extends CordovaPlugin {
             }
             fileOutput.close();
             callbackContext.success("Video downloaded successfully to " + filePath);
-        } catch (Exception error) {
-            String message = "Error descargando video ";
-            if(error.getCause() != null && error.getCause().getMessage().length() > 0) message = error.getCause().getLocalizedMessage();            
-            if(error.getCause() != null && error.getCause().getLocalizedMessage().length() > 0) message = error.getCause().getLocalizedMessage();
-            if(error.getLocalizedMessage().length() > 0) message = error.getLocalizedMessage();
-            if(error.getMessage().length() > 0) message = error.getMessage();
-			callbackContext.error(message);
+        } catch (Exception e) {
+            callbackContext.error("Failed to download video: " + e.getMessage());
         }
     }
-	
 }
