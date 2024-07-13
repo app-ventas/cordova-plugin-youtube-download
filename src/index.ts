@@ -1,10 +1,9 @@
-import { registerPlugin } from '@capacitor/core';
+// my-youtube-download-plugin/src/index.ts
 
-import type { YoutubeDownloadPlugin } from './definitions';
-
-const YoutubeDownload = registerPlugin<YoutubeDownloadPlugin>('YoutubeDownload', {
-  web: () => import('./web').then(m => new m.YoutubeDownloadWeb()),
-});
+import { registerWebPlugin } from '@capacitor/core';
+import { YoutubeDownloadInstance } from './web';
 
 export * from './definitions';
-export { YoutubeDownload };
+export { YoutubeDownloadInstance };
+
+registerWebPlugin(YoutubeDownloadInstance);
