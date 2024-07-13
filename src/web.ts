@@ -10,4 +10,8 @@ export class YoutubeDownloadWeb extends WebPlugin implements YoutubeDownloadPlug
   async openMap(location: OpenMapOptions): Promise<void> {
     // logic here
   }
+  
 }
+
+// Exporta una instancia del plugin
+export const YoutubeDownload = new YoutubeDownloadWeb();
